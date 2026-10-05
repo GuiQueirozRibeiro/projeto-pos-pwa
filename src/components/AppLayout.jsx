@@ -51,11 +51,11 @@ export default function AppLayout() {
       </Navbar>
 
       {/* Main Content Area (Scrollable) */}
-      <div className="flex-grow-1 overflow-auto pb-5 pb-md-0" style={{ backgroundColor: "var(--bs-body-bg)" }}>
+      <main className="flex-grow-1 overflow-auto pb-5 pb-md-0" style={{ backgroundColor: "var(--bs-body-bg)" }}>
         <Container className="py-4">
           <Outlet />
         </Container>
-      </div>
+      </main>
 
       {/* Bottom Navigation (Mobile/App style) */}
       <Nav className="bg-white border-top justify-content-around py-2 flex-shrink-0 fixed-bottom d-md-none">

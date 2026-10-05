@@ -62,7 +62,14 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
 - `src/App.jsx`: Configurado com React Router DOM e protegido.
 - `main.jsx`: Inclusão do CSS do Bootstrap Icons.
 
-## Fase 2 — Linha do tempo ⏳
+## Fase 2 — Linha do tempo ✅ (05/10/2026)
+
+### O que foi feito
+
+- `src/services/taskService.js`: Camada de abstração do Firestore implementada com suporte a queries (`subscribeTasksByDate`) baseadas em `uid` e `date`. Alinhada perfeitamente ao *schema* estrito definido em `firestore.rules`.
+- `src/utils/dateHelpers.js`: Funções de apoio para gerenciar formatação de horas e a data atual (`YYYY-MM-DD`) localmente.
+- `src/components/TaskCard.jsx`: Componente modular para mostrar os blocos de tempo com visualização da categoria e opções de Focar, Concluir e Excluir.
+- `src/pages/Hoje.jsx`: Página principal usando `onSnapshot` do Firebase para listagem em tempo real (reativa). Inclui Modal estilizado para criar blocos de tempo respeitando regras do banco. Adição de card de progresso diário (circular).
 ## Fase 3 — Timer Pomodoro ⏳
 ## Fase 4 — Dashboard ⏳
 ## Fase 5 — PWA final, Firebase real e Hosting ⏳

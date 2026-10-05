@@ -12,6 +12,7 @@ import Foco from "./pages/Foco.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Sobre from "./pages/Sobre.jsx";
 import Perfil from "./pages/Perfil.jsx";
+import Relatorio from "./pages/Relatorio.jsx";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="sobre" element={<Sobre />} />
             <Route path="perfil" element={<Perfil />} />
+            <Route path="relatorio" element={<Relatorio />} />
           </Route>
         </Routes>
         </BrowserRouter>

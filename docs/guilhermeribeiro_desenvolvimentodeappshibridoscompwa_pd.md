@@ -33,12 +33,12 @@ Através da aba "Dados", todas as tarefas do Firebase são calculadas localmente
 ## 5. Como o professor pode testar
 O projeto foi pensado para facilitar a correção. O código foi entregue com o arquivo `.env.production` preenchido (ou mapeado para ser facilmente substituído). 
 
-O senhor pode optar por testar o aplicativo diretamente na **URL de produção do Firebase Hosting**:
-*(INSERIR SEU LINK DO FIREBASE HOSTING AQUI)*
+O senhor pode optar por testar o aplicativo diretamente na **URL de produção**:
+- **Deploy Oficial (Vercel):** [https://projeto-pos-pwa.vercel.app/](https://projeto-pos-pwa.vercel.app/)
 
 Ou rodar localmente no seu computador:
 1. `npm install`
-2. `npm run build && npm run preview` (Executará a versão otimizada conversando com a nuvem real).
+2. `npm run build && npm run preview` (Executará a versão de produção otimizada).
 
 O projeto é capaz de se autenticar nativamente no Firebase. Basta criar uma conta através do próprio botão "Criar conta" na tela de login da aplicação para testar as dependências reais.
 

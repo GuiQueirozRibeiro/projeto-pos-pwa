@@ -5,6 +5,8 @@ PWA em **React + Firebase** desenvolvido como Projeto de Disciplina da pós-grad
 O Ritmo ajuda você a **planejar o dia em blocos de horário**, **executar cada bloco com um timer Pomodoro** e,
 no fim do dia, **ver no Dashboard** o que foi feito e quanto tempo você realmente focou.
 
+🌐 **Deploy em Produção:** [https://projeto-pos-pwa.vercel.app/](https://projeto-pos-pwa.vercel.app/)
+
 > Projeto construído a partir da base do professor
 > ([kndrio/infnet-pwa-react](https://github.com/kndrio/infnet-pwa-react) e
 > [kndrio/infnet-26e3-pwa](https://github.com/kndrio/infnet-26e3-pwa)), mantendo a mesma stack e os mesmos padrões

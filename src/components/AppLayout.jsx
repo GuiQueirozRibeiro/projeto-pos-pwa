@@ -15,9 +15,9 @@ export default function AppLayout() {
     navigate("/login");
   }
 
-  // Helper para aplicar classe 'active' aos ícones do bottom nav
+  // Helper para aplicar classe 'active' e alto contraste aos ícones do bottom nav
   const getNavClass = ({ isActive }) =>
-    `nav-link d-flex flex-column align-items-center ${isActive ? "text-primary fw-bold" : "text-secondary"}`;
+    `nav-link d-flex flex-column align-items-center bottom-nav-item ${isActive ? "active fw-bold" : ""}`;
 
   return (
     <div className="d-flex flex-column vh-100 overflow-hidden">

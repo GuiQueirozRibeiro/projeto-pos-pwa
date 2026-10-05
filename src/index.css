@@ -133,6 +133,21 @@ body {
   transition: none !important;
 }
 
+/* Bottom Navigation com alto contraste garantido */
+.bottom-nav-item {
+  color: #475569 !important;
+}
+.bottom-nav-item.active {
+  color: var(--bs-primary) !important;
+}
+
+[data-bs-theme="dark"] .bottom-nav-item {
+  color: #cbd5e1 !important;
+}
+[data-bs-theme="dark"] .bottom-nav-item.active {
+  color: #818cf8 !important;
+}
+
 /* Categorias com alto contraste para tema claro e escuro */
 .cat-trabalho { color: #1d4ed8; }
 .cat-estudo { color: #6d28d9; }

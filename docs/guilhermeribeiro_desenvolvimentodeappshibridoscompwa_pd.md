@@ -17,8 +17,8 @@ O projeto **Ritmo** é um PWA (Progressive Web App) desenvolvido para auxiliar p
 ## 3. Arquitetura e Decisões (ADR)
 A arquitetura escolhida foi do tipo SPA (*Single Page Application*) conversando diretamente com o Firebase SDK (*Client-first*), abolindo a necessidade de um servidor intermediário (Node.js/Express) para lidar com o CRUD.
 
-- **ADR-004:** O Firestore foi configurado com suporte offline agressivo (`persistentLocalCache`), garantindo que o usuário consiga adicionar blocos de tempo ou acessar seu histórico de Pomodoros mesmo quando estiver no metrô, sem conexão. Os dados são sincronizados com a nuvem na próxima vez que a rede estiver ativa.
-- **Segurança:** Sem um backend, a segurança precisou ser garantida pelas Regras do Firestore (`firestore.rules`). Desenvolvemos um *schema validation* rígido diretamente nas regras. Um cliente não consegue escrever dados corrompidos (como strings em campos numéricos) nem ler blocos de tempo de outros usuários, evitando falhas conhecidas como IDOR (*Insecure Direct Object Reference*).
+- **ADR-004:** O Firestore foi configurado com suporte offline (`persistentLocalCache`), garantindo que o usuário consiga adicionar blocos de tempo ou acessar seu histórico de Pomodoros mesmo sem conexão. Os dados são sincronizados com a nuvem na próxima vez que a rede estiver ativa.
+- **Segurança:** Sem um backend, a segurança precisou ser garantida pelas Regras do Firestore (`firestore.rules`). Desenvolvemos um *schema validation* diretamente nas regras. Um cliente não consegue escrever dados corrompidos (como strings em campos numéricos) nem ler blocos de tempo de outros usuários, evitando falhas conhecidas como IDOR (*Insecure Direct Object Reference*).
 
 ## 4. O que funciona e Diferenciais
 ### 4.1. Funcionalidades do App Shell
@@ -44,10 +44,10 @@ O projeto é capaz de se autenticar nativamente no Firebase. Basta criar uma con
 
 ## 6. Declaração de Uso de Inteligência Artificial
 **Nível: Sinal Verde 🟢**
-Conforme as regras da disciplina, o uso de inteligência artificial (Google Gemini) foi explorado de maneira cuidadosa e estratégica (Sinal Verde 🟢). A IA auxiliou a refinar o código e construir a infraestrutura do Service Worker (Workbox). Vale ressaltar que os resultados gerados foram criticamente analisados, testados e as devidas precisões técnicas validadas antes de comporem o projeto final.
+Conforme as regras da disciplina, o uso de inteligência artificial (Google Gemini) foi explorado de maneira estratégica (Sinal Verde 🟢). A IA auxiliou a refinar o código e construir a infraestrutura do Service Worker (Workbox). Os resultados gerados foram analisados, testados e validados antes de comporem o projeto final.
 
 ## 7. Evolução de UX: Do Protótipo ao Código Real
-O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas") baseia-se na extensa pesquisa de usuários feita no módulo de UX para Desenvolvimento Mobile.
+O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas") baseia-se na pesquisa de usuários feita no módulo de UX para Desenvolvimento Mobile.
 
 **Dores Identificadas na Pesquisa Original:**
 - Incerteza e medo de perder dados ao preencher formulários extensos.
@@ -55,7 +55,7 @@ O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas"
 - Falta de feedback visual confirmando que a ação foi salva com sucesso.
 
 **Aplicação Direta no PWA Ritmo:**
-1. **Redução Cognitiva e Labels Explícitas:** Atendendo ao feedback do entrevistado Gustavo Passo (54 anos), o Modal de Novo Bloco do Ritmo possui tipografia arejada e **rótulos explícitos (labels)** logo acima de cada input (*O que você vai fazer?*, *Categoria*, *Horário*), garantindo previsibilidade total, com um botão massivo e claro de "Salvar Bloco".
+1. **Redução Cognitiva e Labels Explícitas:** Atendendo ao feedback do entrevistado Gustavo Passo (54 anos), o Modal de Novo Bloco do Ritmo possui **rótulos explícitos (labels)** logo acima de cada input (*O que você vai fazer?*, *Categoria*, *Horário*), garantindo previsibilidade, com um botão claro de "Salvar Bloco".
 2. **Navegação Móvel (*Bottom Navigation*):** Para contemplar usuários iniciantes em smartphones (como a persona de 75 anos da nossa pesquisa), optou-se por navegação fixa na parte inferior, abolindo menus "hambúrguer" ocultos e usando ícones claros.
 3. **Feedback Imediato (Toast):** Conforme relatado pelo entrevistado Victor Cardoso (30 anos), inserimos notificações instantâneas do tipo "Toast" (*Bloco salvo com sucesso!*) na base da tela após a criação de qualquer bloco, aliviando a ansiedade e o "medo de que não sincronizou".
 4. **Dashboard de Resumo Consolidado:** O anel percentual solicitado na pesquisa de UX foi implementado na aba "Hoje" (indicando quantos blocos diários foram cumpridos). A aba "Dados" se expandiu para exibir os históricos consolidados em tempo real extraídos do Firestore, permitindo ao usuário "bater o olho e ver" onde foca mais tempo (Trabalho, Estudo, etc.).
@@ -65,7 +65,7 @@ Com isso, entregamos não apenas um código funcional, mas um produto **focado n
 ## 8. Relatório Teórico de Usabilidade e História
 
 **1. O início da computação**
-A computação iniciou-se com máquinas de uso puramente militar e científico, como o ENIAC. Seu foco não era o usuário comum, mas a resolução de cálculos massivos; as interfaces resumiam-se a cartões perfurados e conexões físicas por cabos.
+A computação iniciou-se com máquinas de uso militar e científico, como o ENIAC. Seu foco não era o usuário comum, mas a resolução de cálculos; as interfaces resumiam-se a cartões perfurados e conexões físicas por cabos.
 
 **2. A internet e comunicação**
 Com a expansão da ARPANET para a rede global (WWW) na década de 90, a comunicação deixou de ser restrita ao meio acadêmico/militar. A World Wide Web introduziu a hiperligação (links), mudando a forma como o mundo consome dados e permitindo o nascimento das aplicações web modernas.
@@ -83,7 +83,7 @@ UX (Experiência do Usuário) garante que o sistema resolva uma dor do usuário 
 A sobrecarga de informações hoje exige soluções limpas e focadas. Usuários desinstalam aplicativos em segundos se não entenderem sua proposta. Portanto, a simplicidade não é ausência de funcionalidades, mas a priorização inteligente que elimina o esforço cognitivo do usuário.
 
 **7. A evolução da usabilidade nos últimos 10 anos**
-Deixamos o skeuomorfismo pesado (texturas de couro, sombras irreais) para adotar o Flat Design e o Material Design. Acessibilidade (contraste, navegação por leitores de tela), interações por voz e design responsivo (que se adapta do relógio ao desktop) tornaram-se o padrão incontestável da indústria.
+Deixamos o skeuomorfismo (texturas de couro, sombras) para adotar o Flat Design e o Material Design. Acessibilidade (contraste, navegação por leitores de tela), interações por voz e design responsivo (que se adapta a diferentes telas) tornaram-se o padrão da indústria.
 
 **8. A evolução do uso de aplicativos móveis nos últimos 10 anos**
 Há 10 anos, usávamos o celular basicamente para comunicação assíncrona. Hoje, o mobile é o controle remoto da vida: movimentação financeira (Pix), transporte (Uber), casa inteligente e produtividade operam primeiramente, ou exclusivamente, em ambientes móveis (*Mobile First*). O uso transicionou da "consulta" para a "gestão de vida em tempo real".

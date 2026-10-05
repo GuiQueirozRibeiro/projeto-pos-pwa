@@ -44,6 +44,10 @@ export default function AppLayout() {
             <Dropdown.Menu>
               <Dropdown.Header>{user?.displayName || user?.email}</Dropdown.Header>
               
+              <Dropdown.Item onClick={() => navigate("/perfil")}>
+                <i className="bi bi-person me-2"></i> Meu Perfil
+              </Dropdown.Item>
+
               <Dropdown.Divider />
               
               <Dropdown.Item onClick={() => setTheme("light")} active={theme === "light"}>

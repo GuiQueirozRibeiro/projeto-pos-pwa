@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getAnalytics, isSupported } from "firebase/analytics";
 import {
   initializeFirestore,
   connectFirestoreEmulator,
@@ -42,4 +43,15 @@ if (useEmulators) {
   // disableWarnings remove o banner de aviso amarelo na tela
   connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
   connectFirestoreEmulator(db, "127.0.0.1", 8080);
+}
+
+// Analytics só é inicializado se não estivermos usando emulador e for suportado
+export let analytics = null;
+if (!useEmulators) {
+  isSupported().then((supported) => {
+    if (supported) {
+      analytics = getAnalytics(firebaseApp);
+      console.info("[Firebase] Analytics inicializado com sucesso.");
+    }
+  });
 }

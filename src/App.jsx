@@ -6,10 +6,12 @@ import AppLayout from "./components/AppLayout.jsx";
 
 // Paginas
 import Login from "./pages/Login.jsx";
+import Registro from "./pages/Registro.jsx";
 import Hoje from "./pages/Hoje.jsx";
 import Foco from "./pages/Foco.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Sobre from "./pages/Sobre.jsx";
+import Perfil from "./pages/Perfil.jsx";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Routes>
           {/* Rota Pública */}
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
 
           {/* Rotas Privadas que usam o AppLayout */}
           <Route
@@ -34,6 +37,7 @@ function App() {
             <Route path="foco" element={<Foco />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="sobre" element={<Sobre />} />
+            <Route path="perfil" element={<Perfil />} />
           </Route>
         </Routes>
         </BrowserRouter>

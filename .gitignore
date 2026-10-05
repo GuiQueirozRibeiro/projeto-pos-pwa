@@ -35,6 +35,7 @@ firebase-debug.log*
 firestore-debug.log*
 ui-debug.log*
 .emulator-data/
+*-adminsdk-*.json
 
 # Saída do vite-plugin-pwa no modo dev
 dev-dist/

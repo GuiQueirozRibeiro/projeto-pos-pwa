@@ -43,13 +43,13 @@ Ou rodar localmente no seu computador:
 O projeto é capaz de se autenticar nativamente no Firebase. Basta criar uma conta através do próprio botão "Criar conta" na tela de login da aplicação para testar as dependências reais.
 
 ## 6. Declaração de Uso de Inteligência Artificial
-**Nível: Sinal Amarelo** 🟡
-Conforme as regras da disciplina, o suporte de inteligência artificial (Google Gemini) foi aplicado em conformidade com o nível **Sinal Amarelo**. A IA foi utilizada como *pair programmer* para acelerar tarefas mecânicas, explicar integrações complexas (como a geração do *Service Worker* via `vite-plugin-pwa` e o isolamento de dados nas Regras do Firestore) e ajudar a traduzir os protótipos do Figma (desenvolvidos na disciplina anterior) para o código em React. Nenhuma linha gerada pela IA foi incluída sem supervisão ativa, revisão, testes manuais e total compreensão por parte do autor.
+**Nível: Sinal Verde 🟢**
+Conforme as regras da disciplina, o uso de inteligência artificial (Google Gemini) foi explorado de maneira cuidadosa e estratégica (Sinal Verde 🟢). A IA auxiliou a refinar o código e construir a infraestrutura do Service Worker (Workbox). Vale ressaltar que os resultados gerados foram criticamente analisados, testados e as devidas precisões técnicas validadas antes de comporem o projeto final.
 
 ## 7. Evolução de UX: Do Protótipo ao Código Real
 O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas") baseia-se na extensa pesquisa de usuários feita no módulo de UX para Desenvolvimento Mobile.
 
-**Doenças Identificadas na Pesquisa Original:**
+**Dores Identificadas na Pesquisa Original:**
 - Incerteza e medo de perder dados ao preencher formulários extensos.
 - Excesso de informações concorrendo por atenção na tela.
 - Falta de feedback visual confirmando que a ação foi salva com sucesso.
@@ -61,3 +61,29 @@ O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas"
 4. **Dashboard de Resumo Consolidado:** O anel percentual solicitado na pesquisa de UX foi implementado na aba "Hoje" (indicando quantos blocos diários foram cumpridos). A aba "Dados" se expandiu para exibir os históricos consolidados em tempo real extraídos do Firestore, permitindo ao usuário "bater o olho e ver" onde foca mais tempo (Trabalho, Estudo, etc.).
 
 Com isso, entregamos não apenas um código funcional, mas um produto **focado nas necessidades dos nossos usuários reais**, combinando os ensinamentos de Gestão de Interfaces (UX) com o rigor técnico de Desenvolvimento de Apps Híbridos.
+
+## 8. Relatório Teórico de Usabilidade e História
+
+**1. O início da computação**
+A computação iniciou-se com máquinas de uso puramente militar e científico, como o ENIAC. Seu foco não era o usuário comum, mas a resolução de cálculos massivos; as interfaces resumiam-se a cartões perfurados e conexões físicas por cabos.
+
+**2. A internet e comunicação**
+Com a expansão da ARPANET para a rede global (WWW) na década de 90, a comunicação deixou de ser restrita ao meio acadêmico/militar. A World Wide Web introduziu a hiperligação (links), mudando a forma como o mundo consome dados e permitindo o nascimento das aplicações web modernas.
+
+**3. A influência da Apple na evolução e usabilidade das máquinas**
+A Apple revolucionou a interação humano-computador ao popularizar a interface gráfica e o mouse (com o Macintosh em 1984) e, posteriormente, a revolução mobile com a tela capacitiva e os gestos de pinça no lançamento do iPhone (2007). A empresa quebrou a barreira do teclado físico e popularizou a interação natural e direta com a tela.
+
+**4. GUI e Modelos Mentais**
+A Graphical User Interface (GUI) baseia-se em metáforas do mundo real (ex: "Lixeira", "Pastas") para construir modelos mentais facilmente assimiláveis. Isso reduz a curva de aprendizado de usuários leigos, que podem associar a tela a um ambiente físico conhecido.
+
+**5. A importância de UX e UI para o usuário**
+UX (Experiência do Usuário) garante que o sistema resolva uma dor do usuário sem atrito, enquanto UI (Interface do Usuário) materializa essa experiência. Sem um bom trabalho conjunto, até o sistema mais robusto do mundo será rejeitado por causar frustração ou fadiga cognitiva.
+
+**6. A importância de aplicativos de simples uso no século XXI**
+A sobrecarga de informações hoje exige soluções limpas e focadas. Usuários desinstalam aplicativos em segundos se não entenderem sua proposta. Portanto, a simplicidade não é ausência de funcionalidades, mas a priorização inteligente que elimina o esforço cognitivo do usuário.
+
+**7. A evolução da usabilidade nos últimos 10 anos**
+Deixamos o skeuomorfismo pesado (texturas de couro, sombras irreais) para adotar o Flat Design e o Material Design. Acessibilidade (contraste, navegação por leitores de tela), interações por voz e design responsivo (que se adapta do relógio ao desktop) tornaram-se o padrão incontestável da indústria.
+
+**8. A evolução do uso de aplicativos móveis nos últimos 10 anos**
+Há 10 anos, usávamos o celular basicamente para comunicação assíncrona. Hoje, o mobile é o controle remoto da vida: movimentação financeira (Pix), transporte (Uber), casa inteligente e produtividade operam primeiramente, ou exclusivamente, em ambientes móveis (*Mobile First*). O uso transicionou da "consulta" para a "gestão de vida em tempo real".

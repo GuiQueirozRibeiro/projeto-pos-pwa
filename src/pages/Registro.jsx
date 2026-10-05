@@ -5,17 +5,17 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { traduzErroAuth } from "../utils/authErrors.js";
 import InstallPwaButton from "../components/InstallPwaButton.jsx";
 
-export default function Login() {
-  const { user, login } = useAuth();
+export default function Registro() {
+  const { user, register } = useAuth();
   const navigate = useNavigate();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Se já estiver logado, redireciona para a home
   if (user) {
     return <Navigate to="/" replace />;
   }
@@ -26,10 +26,15 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await login(email, password);
+      if (!name.trim()) throw { code: "custom", message: "Informe seu nome." };
+      await register(name, email, password);
       navigate("/");
     } catch (err) {
-      setError(traduzErroAuth(err.code));
+      if (err.code === "custom") {
+        setError(err.message);
+      } else {
+        setError(traduzErroAuth(err.code));
+      }
     } finally {
       setLoading(false);
     }
@@ -47,11 +52,22 @@ export default function Login() {
 
         <Card className="shadow-sm border-0 rounded-4 p-3 p-md-4">
           <Card.Body>
-            <h2 className="fs-4 fw-bold text-center mb-4">Entrar</h2>
+            <h2 className="fs-4 fw-bold text-center mb-4">Criar conta</h2>
 
             {error && <Alert variant="danger" className="py-2">{error}</Alert>}
 
             <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Nome completo</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  placeholder="Como quer ser chamado?" 
+                  value={name} 
+                  onChange={(e) => setName(e.target.value)} 
+                  required 
+                />
+              </Form.Group>
+
               <Form.Group className="mb-3">
                 <Form.Label>E-mail</Form.Label>
                 <Form.Control 
@@ -75,14 +91,14 @@ export default function Login() {
               </Form.Group>
 
               <Button disabled={loading} className="w-100 rounded-pill py-2 fw-bold" type="submit">
-                {loading ? "Aguarde..." : "Entrar"}
+                {loading ? "Aguarde..." : "Cadastrar"}
               </Button>
             </Form>
 
             <div className="text-center mt-4">
-              <span className="text-muted">Ainda não tem conta?</span>{" "}
-              <Link to="/registro" className="p-0 text-decoration-none fw-bold">
-                Criar conta
+              <span className="text-muted">Já tem uma conta?</span>{" "}
+              <Link to="/login" className="p-0 text-decoration-none fw-bold">
+                Entrar aqui
               </Link>
             </div>
           </Card.Body>

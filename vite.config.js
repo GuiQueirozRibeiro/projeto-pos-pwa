@@ -118,6 +118,9 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    chunkSizeWarningLimit: 1000,
+  },
   test: {
     // Testes só de funções puras (datas, estatísticas, timer): ambiente node basta.
     environment: "node",

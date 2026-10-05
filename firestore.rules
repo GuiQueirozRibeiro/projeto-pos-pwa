@@ -1,0 +1,106 @@
+rules_version = '2';
+
+// =====================================================================
+// Regras de segurança do Firestore — Ritmo
+// =====================================================================
+// Base: firestore.rules do professor (isolamento por uid).
+// Acréscimo: VALIDAÇÃO DOS CAMPOS. No Firebase o cliente fala direto com
+// o banco, sem um servidor intermediário. Então qualquer pessoa com as
+// chaves do app (que são públicas) poderia mandar um documento com
+// qualquer formato. As regras são o único "backend" que garante que:
+//   1. só o dono lê/altera os próprios dados;
+//   2. os dados têm o formato esperado (tipos, tamanhos, valores válidos).
+//
+// Teste rápido: rode `npm run emulators` e veja a aba "Firestore > Requests"
+// na Emulator UI (http://localhost:4000). Cada leitura/escrita mostra
+// qual regra permitiu ou negou.
+// =====================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Funções auxiliares ----------
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // O documento pertence ao usuário logado?
+    function isOwner(data) {
+      return signedIn() && data.uid == request.auth.uid;
+    }
+
+    // "YYYY-MM-DD" (data local do bloco). Usamos classes [0-9] em vez de \d
+    // para evitar confusão de escape dentro de strings das regras.
+    function isDateString(v) {
+      return v is string && v.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
+    // "HH:MM" de 00:00 a 23:59
+    function isTimeString(v) {
+      return v is string && v.matches('^([01][0-9]|2[0-3]):[0-5][0-9]$');
+    }
+
+    // ---------- tasks (blocos de tempo) ----------
+
+    function isValidTask(t) {
+      return t.keys().hasOnly([
+               'uid', 'title', 'category', 'date', 'startTime',
+               'durationMinutes', 'completed', 'completedAt',
+               'focusSeconds', 'pomodoros', 'createdAt'
+             ])
+          && t.title is string && t.title.size() > 0 && t.title.size() <= 120
+          && t.category in ['trabalho', 'estudo', 'saude', 'pessoal']
+          && isDateString(t.date)
+          && isTimeString(t.startTime)
+          && t.durationMinutes is int
+          && t.durationMinutes >= 5 && t.durationMinutes <= 720
+          && t.completed is bool
+          && (t.completedAt == null || t.completedAt is timestamp)
+          && t.focusSeconds is int && t.focusSeconds >= 0
+          && t.pomodoros is int && t.pomodoros >= 0;
+    }
+
+    match /tasks/{taskId} {
+      allow read, delete: if isOwner(resource.data);
+
+      allow create: if isOwner(request.resource.data)
+                    && isValidTask(request.resource.data)
+                    // createdAt precisa ser serverTimestamp() (hora do servidor),
+                    // não um valor qualquer enviado pelo cliente.
+                    && request.resource.data.createdAt == request.time;
+
+      allow update: if isOwner(resource.data)
+                    && isOwner(request.resource.data)   // não pode "doar" a task
+                    && isValidTask(request.resource.data)
+                    && request.resource.data.createdAt == resource.data.createdAt;
+    }
+
+    // ---------- focusSessions (histórico de pomodoros) ----------
+    // Cada pomodoro concluído vira um documento. Título e categoria da task
+    // são copiados para cá (desnormalização) para o Dashboard não precisar
+    // buscar a task de cada sessão. O histórico é imutável: não pode editar.
+
+    function isValidSession(s) {
+      return s.keys().hasOnly([
+               'uid', 'taskId', 'taskTitle', 'category', 'date',
+               'startedAt', 'endedAt', 'durationSeconds'
+             ])
+          && (s.taskId == null || s.taskId is string)
+          && (s.taskTitle == null || (s.taskTitle is string && s.taskTitle.size() <= 120))
+          && (s.category == null || s.category in ['trabalho', 'estudo', 'saude', 'pessoal'])
+          && isDateString(s.date)
+          && s.startedAt is timestamp
+          && s.endedAt is timestamp
+          && s.durationSeconds is int
+          && s.durationSeconds > 0 && s.durationSeconds <= 4 * 60 * 60;
+    }
+
+    match /focusSessions/{sessionId} {
+      allow read, delete: if isOwner(resource.data);
+      allow create: if isOwner(request.resource.data)
+                    && isValidSession(request.resource.data);
+      allow update: if false;
+    }
+  }
+}

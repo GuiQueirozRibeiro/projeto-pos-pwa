@@ -1,0 +1,87 @@
+/* =====================================================================
+   Tema do Ritmo (design tokens)
+   ---------------------------------------------------------------------
+   O professor usou o Bootstrap "puro". Aqui mantemos o Bootstrap, mas
+   trocamos as cores e a fonte sobrescrevendo as VARIÁVEIS CSS que ele
+   expõe (--bs-*). Assim todos os componentes do react-bootstrap (Button,
+   Card, Form...) ganham a identidade do app sem precisar de CSS em cada um.
+
+   Tema escuro é o padrão (data-bs-theme="dark" no <html>).
+   ===================================================================== */
+
+:root,
+[data-bs-theme="dark"] {
+  /* Paleta própria (usada nos nossos componentes) */
+  --ritmo-primary: #6366f1;        /* índigo: ação principal */
+  --ritmo-primary-strong: #4f46e5;
+  --ritmo-focus: #f97362;          /* "tomate": tudo que é Pomodoro/foco */
+  --ritmo-success: #34d399;
+  --ritmo-warning: #fbbf24;
+
+  /* Cores por categoria de bloco */
+  --ritmo-cat-trabalho: #60a5fa;
+  --ritmo-cat-estudo: #a78bfa;
+  --ritmo-cat-saude: #34d399;
+  --ritmo-cat-pessoal: #f472b6;
+
+  /* Superfícies */
+  --ritmo-bg: #0f1020;
+  --ritmo-surface: #181a2e;
+  --ritmo-surface-2: #22253d;
+  --ritmo-border: rgba(255, 255, 255, 0.08);
+
+  /* Medidas */
+  --ritmo-radius: 16px;
+  --ritmo-bottom-nav-height: 64px;
+
+  /* Sobrescrevendo variáveis do Bootstrap */
+  --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bs-body-bg: var(--ritmo-bg);
+  --bs-body-color: #e5e7f0;
+  --bs-secondary-color: #9aa0b8;
+  --bs-border-color: var(--ritmo-border);
+  --bs-border-radius: 12px;
+  --bs-border-radius-lg: var(--ritmo-radius);
+  --bs-primary: var(--ritmo-primary);
+  --bs-primary-rgb: 99, 102, 241;
+  --bs-link-color: #a5b4fc;
+  --bs-link-hover-color: #c7d2fe;
+}
+
+body {
+  margin: 0;
+  background: var(--ritmo-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botão primário do Bootstrap usa variáveis próprias (--bs-btn-*),
+   então ajustamos aqui uma única vez. */
+.btn-primary {
+  --bs-btn-bg: var(--ritmo-primary);
+  --bs-btn-border-color: var(--ritmo-primary);
+  --bs-btn-hover-bg: var(--ritmo-primary-strong);
+  --bs-btn-hover-border-color: var(--ritmo-primary-strong);
+  --bs-btn-active-bg: var(--ritmo-primary-strong);
+  --bs-btn-disabled-bg: var(--ritmo-primary);
+  --bs-btn-disabled-border-color: var(--ritmo-primary);
+}
+
+.card {
+  --bs-card-bg: var(--ritmo-surface);
+  --bs-card-border-color: var(--ritmo-border);
+  --bs-card-border-radius: var(--ritmo-radius);
+}
+
+/* Respeita quem prefere menos animação (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

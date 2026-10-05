@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Ritmo — Foco e blocos de tempo</title>
+    <meta
+      name="description"
+      content="Ritmo é um PWA para planejar o dia em blocos de horário, executar as tarefas com Pomodoro e acompanhar o que foi feito."
+    />
+
+    <!-- Cor da barra do navegador/sistema (deve combinar com o manifest) -->
+    <meta name="theme-color" content="#4f46e5" />
+
+    <!-- Ícones: favicon para o navegador, apple-touch-icon para o iOS
+         (o Safari ainda não usa os ícones do manifest na tela inicial) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ritmo" />
+
+    <!-- Fonte Inter (Google Fonts). Fica em cache pelo service worker
+         (ver runtimeCaching em vite.config.js), então funciona offline
+         depois do primeiro acesso. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <noscript>O Ritmo precisa de JavaScript para funcionar.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

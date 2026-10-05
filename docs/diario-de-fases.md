@@ -1,0 +1,72 @@
+# Diário de fases
+
+O que foi feito em cada fase, o que aprender com ela e como testar.
+
+## Combinados do projeto
+
+- **Disciplina:** Desenvolvimento de Apps Híbridos com PWA [26E3_3]
+- **PDF da entrega:** `guilhermeribeiro_desenvolvimentodeappshibridoscompwa_pd.pdf` (formato "nomedoaluno_nomedadisciplina_pd.PDF")
+- **Prazo no Moodle:** 12/10/2026
+- **Nome do app:** Ritmo (confirmado)
+- **Fluxo de trabalho:** uma fase por vez; ao final de cada fase, **commit + push** e explicação dos arquivos
+- **Plano completo:** fases 0 a 6 no README (tabela "Status") e nos tópicos abaixo
+
+---
+
+## Fase 0 — Base do projeto ✅ (05/10/2026)
+
+### O que foi feito
+
+1. **Projeto Vite + React** criado com `create-vite` (template `react`, com ESLint) e movido para a raiz do repositório.
+2. **Dependências iguais às do professor:** `react-bootstrap`, `bootstrap`, `react-router-dom`, `firebase`, `vite-plugin-pwa`, `firebase-tools`. Acréscimo: `vitest`.
+3. **`vite.config.js`**: manifest do Ritmo (nome, cores, `start_url: /hoje`, 3 atalhos), Workbox com cache de fontes e configuração do Vitest.
+4. **`index.html`**: `lang="pt-BR"`, título e descrição (SEO), `theme-color`, ícones para iOS e fonte Inter.
+5. **Firebase:** `firebase.json` (emuladores), `.firebaserc` (projeto `demo-ritmo`), **regras com validação** e **índices compostos**.
+6. **Tema:** `src/index.css` sobrescreve as variáveis do Bootstrap com a paleta do Ritmo (modo escuro).
+7. **Documentação** em `docs/`.
+
+### Conceitos para revisar
+
+- **Variáveis de ambiente no Vite:** só o que começa com `VITE_` chega ao navegador (`import.meta.env`). Nada secreto deve ir para o front-end.
+- **Por que a config do Firebase pode ser pública:** ela só identifica o projeto. Quem protege os dados são as **regras**.
+- **Projeto `demo-*`:** só existe para os emuladores. É seguro e não precisa de login.
+- **Manifest gerado:** o `manifest.webmanifest` não é escrito à mão; o plugin o gera no build.
+- **Service worker gerado:** compare `infnet-26e3-pwa/sw.js` com o bloco `workbox` (tabela em [05-pwa.md](05-pwa.md)).
+
+### Como testar
+
+```bash
+npm run lint            # sem erros
+npm run build           # gera dist/sw.js e dist/manifest.webmanifest
+npm run preview         # http://localhost:4173 → DevTools > Application > Manifest / Service Workers
+npm run emulators       # http://localhost:4000 (painel dos emuladores)
+```
+
+### Verificado
+
+- `npm run lint` ✅ · `npm run build` ✅ (precache de 23 arquivos)
+- Emuladores iniciam e as regras compilam ✅
+- Leitura sem login e escrita inválida são negadas (HTTP 403) ✅
+
+---
+
+## Fase 1 — Autenticação e App Shell ⏳
+
+Roteiro (base: arquivos equivalentes em `../infnet-pwa-react/src`):
+
+- `src/firebase.js`: igual ao do professor (Auth + Firestore com `persistentLocalCache`, emuladores se `VITE_USE_EMULATORS=true`), sem Messaging; fallback `projectId: "demo-ritmo"`
+- `src/contexts/AuthContext.jsx`: igual, mais o nome no cadastro (`updateProfile`)
+- `src/components/ProtectedRoute.jsx`, `OfflineBanner.jsx`, `InstallPwaButton.jsx`: reaproveitados
+- `src/components/AppLayout.jsx`: barra superior + **navegação inferior** (Hoje · Foco · Dashboard · Sobre) com `<Outlet />`
+- `src/pages/Login.jsx`: abas Entrar/Criar conta, erros traduzidos (`src/utils/authErrors.js`)
+- `src/App.jsx`: rotas `/login`, `/hoje`, `/foco`, `/dashboard`, `/sobre` (páginas provisórias nas três últimas)
+
+## Fase 2 — Linha do tempo ⏳
+## Fase 3 — Timer Pomodoro ⏳
+## Fase 4 — Dashboard ⏳
+## Fase 5 — PWA final, Firebase real e Hosting ⏳
+
+Inclui: projeto Firebase real, `.env.production` versionado, `hosting` no `firebase.json`, deploy,
+conta de demonstração com dados de exemplo (ver ADR-010). Extra opcional: FCM + Cloud Function agendada (ADR-007).
+
+## Fase 6 — Relatório e documentação final ⏳

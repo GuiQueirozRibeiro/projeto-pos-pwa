@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator } from "firebase/auth";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import {
+  initializeAuth,
+  indexedDBLocalPersistence,
+  browserLocalPersistence,
+  connectAuthEmulator,
+} from "firebase/auth";
 import {
   initializeFirestore,
   connectFirestoreEmulator,
@@ -25,7 +29,9 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig);
 
-export const auth = getAuth(firebaseApp);
+export const auth = initializeAuth(firebaseApp, {
+  persistence: [indexedDBLocalPersistence, browserLocalPersistence],
+});
 
 // Firestore configurado com cache local persistente.
 // Isso garante o funcionamento offline: grava no IndexedDB local e
@@ -45,13 +51,3 @@ if (useEmulators) {
   connectFirestoreEmulator(db, "127.0.0.1", 8080);
 }
 
-// Analytics só é inicializado se não estivermos usando emulador e for suportado
-export let analytics = null;
-if (!useEmulators) {
-  isSupported().then((supported) => {
-    if (supported) {
-      analytics = getAnalytics(firebaseApp);
-      console.info("[Firebase] Analytics inicializado com sucesso.");
-    }
-  });
-}

@@ -132,7 +132,7 @@ export default function Foco() {
             {minutes}:{seconds}
           </div>
 
-          <ProgressBar now={progress} className="mb-4" style={{ height: "6px" }} />
+          <ProgressBar now={progress} aria-label="Progresso da sessão de foco" className="mb-4" style={{ height: "6px" }} />
 
           <div className="d-flex justify-content-center gap-3">
             <Button 
@@ -149,6 +149,7 @@ export default function Foco() {
               variant="outline-secondary" 
               size="lg" 
               className="rounded-pill px-4"
+              aria-label="Reiniciar cronômetro"
               onClick={resetTimer}
             >
               <i className="bi bi-arrow-counterclockwise"></i>

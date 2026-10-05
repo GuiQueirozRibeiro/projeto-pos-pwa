@@ -32,13 +32,22 @@ export default function AppLayout() {
         <Navbar.Collapse className="justify-content-end">
           <InstallPwaButton className="me-3" />
           <Dropdown align="end">
-            <Dropdown.Toggle variant="link" id="dropdown-basic" className="d-flex align-items-center border-0 bg-transparent p-0 text-body text-decoration-none">
+            <Dropdown.Toggle 
+              as="div" 
+              role="button"
+              tabIndex={0}
+              aria-label="Menu de opções do usuário"
+              id="dropdown-basic" 
+              className="d-flex align-items-center bg-transparent p-0 text-decoration-none no-caret" 
+              style={{ cursor: "pointer" }}
+            >
               <div
                 className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
                 style={{ width: "36px", height: "36px", fontSize: "14px", fontWeight: "600" }}
               >
                 {user?.displayName ? user.displayName.charAt(0).toUpperCase() : user?.email?.charAt(0).toUpperCase()}
               </div>
+              <i className="bi bi-chevron-down ms-2 text-body"></i>
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

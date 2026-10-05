@@ -62,28 +62,45 @@ O projeto **Ritmo** (originalmente idealizado sob o nome "Santuário de Tarefas"
 
 Com isso, entregamos não apenas um código funcional, mas um produto **focado nas necessidades dos nossos usuários reais**, combinando os ensinamentos de Gestão de Interfaces (UX) com o rigor técnico de Desenvolvimento de Apps Híbridos.
 
-## 8. Relatório Teórico de Usabilidade e História
+## 8. Relatório Teórico: Fundamentos de Mobile e UX
 
-**1. O início da computação**
-A computação iniciou-se com máquinas de uso militar e científico, como o ENIAC. Seu foco não era o usuário comum, mas a resolução de cálculos; as interfaces resumiam-se a cartões perfurados e conexões físicas por cabos.
+### 1. Modos de Cor (RGB vs. Cores Indexadas) e Resolução em Dispositivos Móveis
+- **RGB:** Modo aditivo que combina canais vermelho, verde e azul, suportando milhões de cores (24/32 bits). É o padrão para telas digitais e imagens fotográficas.
+- **Cores Indexadas:** Utiliza uma paleta restrita (até 256 cores, 8 bits), gerando arquivos compactos, comuns em ícones simples e GIFs.
+- **Impacto da Resolução:** Telas móveis contam com alta densidade de pixels (PPI). Imagens em baixa resolução sofrem pixelização e desfoque quando ampliadas. Recomenda-se o uso de gráficos vetoriais (SVG) e ativos exportados em múltiplas resoluções (@2x, @3x).
 
-**2. A internet e comunicação**
-Com a expansão da ARPANET para a rede global (WWW) na década de 90, a comunicação deixou de ser restrita ao meio acadêmico/militar. A World Wide Web introduziu a hiperligação (links), mudando a forma como o mundo consome dados e permitindo o nascimento das aplicações web modernas.
+### 2. Elementos de Interface Comuns em Aplicativos Móveis
+- **Barras de Navegação (Nav/Tab Bars):** Situadas no topo ou na base (Bottom Navigation), organizam e alternam entre as seções principais da aplicação.
+- **Botões (Buttons e FAB):** Executam ações imediatas; o botão flutuante (*Floating Action Button*) destaca a ação primária da tela.
+- **Campos de Entrada (Inputs):** Recebem dados textuais, numéricos ou opções selecionadas pelo usuário.
+- **Cards e Listas:** Agrupam blocos de informação de forma modular e visualmente separada.
+- **Modais e Diálogos:** Solicitam confirmações ou registram dados sem abandonar a tela corrente.
 
-**3. A influência da Apple na evolução e usabilidade das máquinas**
-A Apple revolucionou a interação humano-computador ao popularizar a interface gráfica e o mouse (com o Macintosh em 1984) e, posteriormente, a revolução mobile com a tela capacitiva e os gestos de pinça no lançamento do iPhone (2007). A empresa quebrou a barreira do teclado físico e popularizou a interação natural e direta com a tela.
+### 3. Importância do Teste de Acessibilidade
+- **Inclusão:** Permite o uso autônomo por pessoas com deficiências visuais, auditivas, motoras ou cognitivas.
+- **Experiência Universal:** Otimizações como contraste adequado e áreas de toque mínimas facilitam o uso por qualquer pessoa em ambientes desfavoráveis (ex.: luz solar intensa ou uso com uma mão).
+- **Conformidade Técnica:** Assegura alinhamento com as diretrizes internacionais da WCAG (*Web Content Accessibility Guidelines*).
 
-**4. GUI e Modelos Mentais**
-A Graphical User Interface (GUI) baseia-se em metáforas do mundo real (ex: "Lixeira", "Pastas") para construir modelos mentais facilmente assimiláveis. Isso reduz a curva de aprendizado de usuários leigos, que podem associar a tela a um ambiente físico conhecido.
+### 4. Prototipagem com Figma e Uso de Plugins
+- **Prototipagem no Figma:** Criação de telas e fluxos interativos navegáveis antes da implementação em código, permitindo validação antecipada de usabilidade e redução de retrabalho.
+- **Plugins:** Extensões que agregam utilidades ao editor, automatizando tarefas repetitivas como preenchimento de dados fictícios, análise de contraste de cores, geração de ícones e exportação de componentes.
 
-**5. A importância de UX e UI para o usuário**
-UX (Experiência do Usuário) garante que o sistema resolva uma dor do usuário sem atrito, enquanto UI (Interface do Usuário) materializa essa experiência. Sem um bom trabalho conjunto, até o sistema mais robusto do mundo será rejeitado por causar frustração ou fadiga cognitiva.
+### 5. Acesso à Internet em Smartphones
+O acesso ocorre por interfaces sem fio:
+- **Redes Móveis (3G, 4G, 5G):** Ondas de rádio conectam o modem do celular à estação rádio-base (torre) da operadora, que direciona o tráfego ao *backbone* da internet.
+- **Wi-Fi:** Conexão por radiofrequência local a um ponto de acesso ou roteador interligado à banda larga fixa.
+Ao efetuar uma requisição de rede, os pacotes são modulados pela antena do aparelho, trafegam até o servidor de destino e retornam pelo mesmo caminho.
 
-**6. A importância de aplicativos de simples uso no século XXI**
-A sobrecarga de informações hoje exige soluções limpas e focadas. Usuários desinstalam aplicativos em segundos se não entenderem sua proposta. Portanto, a simplicidade não é ausência de funcionalidades, mas a priorização inteligente que elimina o esforço cognitivo do usuário.
+### 6. O 4G e Características na Aplicação Móvel
+O 4G (baseado na tecnologia LTE) é a quarta geração de conectividade móvel:
+- **Altas Velocidades:** Transferências na ordem de dezenas de Mbps, viabilizando streaming e consumo de dados sem engasgos.
+- **Baixa Latência:** Redução no tempo de ida e volta dos pacotes, essencial para chamadas VoIP, jogos e sincronização em tempo real.
+- **Arquitetura All-IP:** Todo o tráfego (dados e chamadas de voz via VoLTE) é transmitido por comutação de pacotes IP, elevando a eficiência da rede.
 
-**7. A evolução da usabilidade nos últimos 10 anos**
-Deixamos o skeuomorfismo (texturas de couro, sombras) para adotar o Flat Design e o Material Design. Acessibilidade (contraste, navegação por leitores de tela), interações por voz e design responsivo (que se adapta a diferentes telas) tornaram-se o padrão da indústria.
+### 7. Conceito de Internet e Provedores de Conexão
+- **Internet:** Rede global descentralizada de computadores conectada pelo conjunto de protocolos padronizados TCP/IP.
+- **Provedor de Conexão (ISP):** Empresa de telecomunicações que concede acesso à infraestrutura global da internet, fornecendo aos usuários roteamento, endereçamento de IP e interconexão com pontos de troca de tráfego (IX/PTT).
 
-**8. A evolução do uso de aplicativos móveis nos últimos 10 anos**
-Há 10 anos, usávamos o celular basicamente para comunicação assíncrona. Hoje, o mobile é o controle remoto da vida: movimentação financeira (Pix), transporte (Uber), casa inteligente e produtividade operam primeiramente, ou exclusivamente, em ambientes móveis (*Mobile First*). O uso transicionou da "consulta" para a "gestão de vida em tempo real".
+### 8. Funcionamento do GPS na Localização em Aplicativos
+- **Princípio:** O receptor GPS interno do smartphone capta sinais de rádio com registro de tempo e posição emitidos por no mínimo quatro satélites. A distância de cada satélite é calculada pela velocidade da luz e a posição geográfica (latitude, longitude, altitude) é calculada por trilateração.
+- **Uso em Apps:** As aplicações utilizam APIs do sistema operacional (como a Geolocation API). Para acelerar a obtenção das coordenadas e economizar bateria, emprega-se o A-GPS (Assisted GPS), combinando o sinal de satélite com dados de redes Wi-Fi e torres celulares próximas.

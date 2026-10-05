@@ -23,6 +23,7 @@ export default defineConfig({
       // "autoUpdate": quando sai um build novo, o SW novo é ativado sozinho
       // (equivalente ao self.skipWaiting() + clients.claim() do sw.js manual).
       registerType: "autoUpdate",
+      injectRegister: "script-defer",
       includeAssets: ["favicon.svg", "icons/*.png"],
       manifest: {
         id: "/",
@@ -120,6 +121,27 @@ export default defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('firebase')) {
+              return 'vendor-firebase';
+            }
+            if (id.includes('react-bootstrap') || id.includes('bootstrap')) {
+              return 'vendor-bootstrap';
+            }
+            if (id.includes('recharts') || id.includes('d3')) {
+              return 'vendor-recharts';
+            }
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'vendor-react';
+            }
+            return 'vendor';
+          }
+        }
+      }
+    }
   },
   test: {
     // Testes só de funções puras (datas, estatísticas, timer): ambiente node basta.

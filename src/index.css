@@ -5,9 +5,13 @@
    trocamos as cores e a fonte sobrescrevendo as VARIÁVEIS CSS que ele
    expõe (--bs-*). Assim todos os componentes do react-bootstrap (Button,
    Card, Form...) ganham a identidade do app sem precisar de CSS em cada um.
-
-   Tema escuro é o padrão (data-bs-theme="dark" no <html>).
    ===================================================================== */
+
+@font-face {
+  font-family: "bootstrap-icons";
+  font-display: swap;
+  src: url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2");
+}
 
 :root {
   /* Cores da marca (iguais em ambos) */
@@ -29,14 +33,14 @@
   --ritmo-cat-saude: #10b981;
   --ritmo-cat-pessoal: #ec4899;
 
-  --ritmo-bg: #f8fafc;
+  --ritmo-bg: #ffffff;
   --ritmo-surface: #ffffff;
-  --ritmo-surface-2: #f1f5f9;
+  --ritmo-surface-2: #f8fafc;
   --ritmo-border: #e2e8f0;
 
   --bs-body-bg: var(--ritmo-bg);
   --bs-body-color: #0f172a;
-  --bs-secondary-color: #64748b;
+  --bs-secondary-color: #475569;
   --bs-border-color: var(--ritmo-border);
   --bs-primary: var(--ritmo-primary);
   --bs-primary-rgb: 79, 70, 229;
@@ -67,11 +71,11 @@
   --ritmo-border: rgba(255, 255, 255, 0.08);
 
   --bs-body-bg: var(--ritmo-bg);
-  --bs-body-color: #e5e7f0;
-  --bs-secondary-color: #9aa0b8;
+  --bs-body-color: #f8fafc;
+  --bs-secondary-color: #cbd5e1;
   --bs-border-color: var(--ritmo-border);
-  --bs-primary: var(--ritmo-primary);
-  --bs-primary-rgb: 99, 102, 241;
+  --bs-primary: #818cf8;
+  --bs-primary-rgb: 129, 140, 248;
   --bs-link-color: #a5b4fc;
   --bs-link-hover-color: #c7d2fe;
 
@@ -79,14 +83,14 @@
   --bs-dropdown-bg: var(--ritmo-surface);
   --bs-dropdown-color: var(--bs-body-color);
   --bs-dropdown-link-color: var(--bs-body-color);
-  --bs-dropdown-link-hover-color: var(--ritmo-primary);
+  --bs-dropdown-link-hover-color: #818cf8;
   --bs-dropdown-link-hover-bg: var(--ritmo-surface-2);
   --bs-dropdown-divider-bg: var(--ritmo-border);
 }
 
 [data-bs-theme="dark"] .form-check-input {
-  background-color: var(--ritmo-surface-2);
-  border-color: var(--bs-secondary-color);
+  background-color: #334155;
+  border-color: #64748b;
 }
 [data-bs-theme="dark"] .form-check-input:checked {
   background-color: var(--ritmo-primary);
@@ -105,16 +109,14 @@ body {
   flex-direction: column;
 }
 
-/* Botão primário do Bootstrap usa variáveis próprias (--bs-btn-*),
-   então ajustamos aqui uma única vez. */
+/* Botão primário */
 .btn-primary {
-  --bs-btn-bg: var(--ritmo-primary);
-  --bs-btn-border-color: var(--ritmo-primary);
-  --bs-btn-hover-bg: var(--ritmo-primary-strong);
-  --bs-btn-hover-border-color: var(--ritmo-primary-strong);
-  --bs-btn-active-bg: var(--ritmo-primary-strong);
-  --bs-btn-disabled-bg: var(--ritmo-primary);
-  --bs-btn-disabled-border-color: var(--ritmo-primary);
+  --bs-btn-bg: #4338ca;
+  --bs-btn-border-color: #4338ca;
+  --bs-btn-hover-bg: #3730a3;
+  --bs-btn-hover-border-color: #3730a3;
+  --bs-btn-active-bg: #312e81;
+  --bs-btn-color: #ffffff;
 }
 
 .card {
@@ -123,6 +125,25 @@ body {
   --bs-card-border-radius: var(--ritmo-radius);
 }
 
+.no-caret::after {
+  display: none !important;
+}
+
+.nav-link {
+  transition: none !important;
+}
+
+/* Categorias com alto contraste para tema claro e escuro */
+.cat-trabalho { color: #1d4ed8; }
+.cat-estudo { color: #6d28d9; }
+.cat-saude { color: #15803d; }
+.cat-pessoal { color: #be185d; }
+
+[data-bs-theme="dark"] .cat-trabalho { color: #93c5fd; }
+[data-bs-theme="dark"] .cat-estudo { color: #c4b5fd; }
+[data-bs-theme="dark"] .cat-saude { color: #86efac; }
+[data-bs-theme="dark"] .cat-pessoal { color: #f9a8d4; }
+
 /* Respeita quem prefere menos animação (acessibilidade) */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -130,3 +151,4 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+

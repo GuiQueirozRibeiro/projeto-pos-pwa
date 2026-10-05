@@ -134,7 +134,7 @@ export default function Hoje() {
                 </div>
               </div>
               <div>
-                <h6 className="fw-bold mb-0">Progresso do dia</h6>
+                <h3 className="h6 fw-bold mb-0">Progresso do dia</h3>
                 <p className="text-muted small mb-0">{completedCount} de {totalCount} blocos concluídos</p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function Hoje() {
           {tasks.length === 0 ? (
             <div className="text-center py-5 text-muted">
               <i className="bi bi-calendar-x fs-1 mb-3 d-block"></i>
-              <h5>Nenhum bloco de tempo hoje.</h5>
+              <h3 className="h5">Nenhum bloco de tempo hoje.</h3>
               <p>Adicione um novo bloco para começar a se organizar.</p>
             </div>
           ) : (

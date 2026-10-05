@@ -41,7 +41,7 @@ export default function Registro() {
   }
 
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100svh", backgroundColor: "var(--bs-body-bg)" }}>
+    <Container as="main" className="d-flex align-items-center justify-content-center" style={{ minHeight: "100svh", backgroundColor: "var(--bs-body-bg)" }}>
       <div className="w-100" style={{ maxWidth: "400px" }}>
         
         <div className="text-center mb-4">

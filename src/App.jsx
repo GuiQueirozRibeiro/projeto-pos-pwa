@@ -6,10 +6,11 @@ import AppLayout from "./components/AppLayout.jsx";
 
 import { Suspense, lazy } from "react";
 
-// Lazy loading das páginas (Code-splitting) para otimizar o carregamento
+import Hoje from "./pages/Hoje.jsx";
+
+// Lazy loading das páginas secundárias (Code-splitting) para otimizar o carregamento
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Registro = lazy(() => import("./pages/Registro.jsx"));
-const Hoje = lazy(() => import("./pages/Hoje.jsx"));
 const Foco = lazy(() => import("./pages/Foco.jsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
 const Sobre = lazy(() => import("./pages/Sobre.jsx"));

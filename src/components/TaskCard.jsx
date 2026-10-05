@@ -1,13 +1,6 @@
 import { Card, Form, Button } from "react-bootstrap";
 import { formatMinutes } from "../utils/dateHelpers.js";
 
-const categoryColors = {
-  trabalho: "primary",
-  estudo: "info",
-  saude: "success",
-  pessoal: "warning",
-};
-
 const categoryIcons = {
   trabalho: "bi-briefcase",
   estudo: "bi-book",
@@ -16,7 +9,6 @@ const categoryIcons = {
 };
 
 export default function TaskCard({ task, onToggleCompleted, onDelete, onFocus }) {
-  const color = categoryColors[task.category] || "secondary";
   const icon = categoryIcons[task.category] || "bi-circle";
 
   return (
@@ -28,23 +20,24 @@ export default function TaskCard({ task, onToggleCompleted, onDelete, onFocus })
             type="checkbox"
             className="fs-4 m-0"
             checked={task.completed}
+            aria-label={`Marcar ${task.title} como ${task.completed ? "pendente" : "concluída"}`}
             onChange={(e) => onToggleCompleted(task.id, e.target.checked)}
           />
         </div>
 
         {/* Informações da Tarefa */}
-        <div className="flex-grow-1" style={{ opacity: task.completed ? 0.6 : 1 }}>
+        <div className="flex-grow-1">
           <div className="d-flex justify-content-between align-items-start mb-1">
-            <h5 className={`mb-0 fw-bold ${task.completed ? "text-decoration-line-through text-muted" : ""}`}>
+            <h4 className={`h5 mb-0 fw-bold ${task.completed ? "text-decoration-line-through text-body-secondary" : ""}`}>
               {task.title}
-            </h5>
-            <span className="badge bg-light text-dark border ms-2">
+            </h4>
+            <span className="badge bg-body-secondary text-body border ms-2">
               <i className="bi bi-clock me-1"></i> {task.startTime}
             </span>
           </div>
           
-          <div className="d-flex align-items-center text-muted small mt-2">
-            <span className={`text-${color} fw-semibold me-3 d-flex align-items-center`}>
+          <div className="d-flex align-items-center text-body-secondary small mt-2">
+            <span className={`cat-${task.category} fw-semibold me-3 d-flex align-items-center`}>
               <i className={`bi ${icon} me-1`}></i>
               <span className="text-capitalize">{task.category}</span>
             </span>

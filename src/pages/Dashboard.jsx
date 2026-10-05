@@ -115,7 +115,7 @@ export default function Dashboard() {
         </Col>
       </Row>
 
-      <Card className="border-0 shadow-sm rounded-4 mb-4 bg-body-tertiary">
+      <Card className="border-0 shadow-sm rounded-4 mb-4">
         <Card.Body>
           <h5 className="fw-bold mb-4">Foco por Categoria</h5>
           <div style={{ height: "200px" }}>
@@ -134,7 +134,7 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
 
-      <Card className="border-0 shadow-sm rounded-4 mb-4 bg-body-tertiary">
+      <Card className="border-0 shadow-sm rounded-4 mb-4">
         <Card.Body>
           <h5 className="fw-bold mb-4">Últimos 7 dias</h5>
           <div style={{ height: "200px" }}>

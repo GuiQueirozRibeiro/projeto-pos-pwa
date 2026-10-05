@@ -95,10 +95,6 @@ export default function AppLayout() {
           <i className="bi bi-info-circle fs-4 mb-1"></i>
           <span style={{ fontSize: "12px" }}>Sobre</span>
         </NavLink>
-        <NavLink to="/relatorio" className={getNavClass}>
-          <i className="bi bi-file-earmark-text fs-4 mb-1"></i>
-          <span style={{ fontSize: "12px" }}>Relatório</span>
-        </NavLink>
       </Nav>
     </div>
   );

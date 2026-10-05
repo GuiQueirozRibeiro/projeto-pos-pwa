@@ -124,7 +124,7 @@ export default function Foco() {
         </div>
       )}
 
-      <Card className="border-0 shadow-sm rounded-4 bg-body-tertiary">
+      <Card className="border-0 shadow-sm rounded-4">
         <Card.Body className="p-4 text-center">
           
           {/* Círculo do Timer ou Texto Gigante */}

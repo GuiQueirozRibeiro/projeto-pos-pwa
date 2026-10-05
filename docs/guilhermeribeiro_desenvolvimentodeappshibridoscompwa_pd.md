@@ -34,7 +34,7 @@ Através da aba "Dados", todas as tarefas do Firebase são calculadas localmente
 O projeto foi pensado para facilitar a correção. O código foi entregue com o arquivo `.env.production` preenchido (ou mapeado para ser facilmente substituído). 
 
 O senhor pode optar por testar o aplicativo diretamente na **URL de produção**:
-- **Deploy Oficial (Vercel):** [https://projeto-pos-pwa.vercel.app/](https://projeto-pos-pwa.vercel.app/)
+- **Deploy Oficial (Vercel):** [https://ritmo-tempo.vercel.app/](https://ritmo-tempo.vercel.app/)
 
 Ou rodar localmente no seu computador:
 1. `npm install`

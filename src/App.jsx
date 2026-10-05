@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AppLayout from "./components/AppLayout.jsx";
 
@@ -12,9 +13,10 @@ import Sobre from "./pages/Sobre.jsx";
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
           {/* Rota Pública */}
           <Route path="/login" element={<Login />} />
 
@@ -34,8 +36,9 @@ function App() {
             <Route path="sobre" element={<Sobre />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

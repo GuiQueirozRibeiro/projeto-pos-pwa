@@ -1,11 +1,13 @@
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useTheme } from "../contexts/ThemeContext.jsx";
 import InstallPwaButton from "./InstallPwaButton.jsx";
 import OfflineBanner from "./OfflineBanner.jsx";
 
 export default function AppLayout() {
   const { user, logout } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
 
   async function handleLogout() {
@@ -22,7 +24,7 @@ export default function AppLayout() {
       <OfflineBanner />
       
       {/* Top Navbar */}
-      <Navbar bg="white" className="border-bottom px-3 py-2 flex-shrink-0" sticky="top">
+      <Navbar className="border-bottom px-3 py-2 flex-shrink-0 bg-body" sticky="top">
         <Navbar.Brand className="fw-bold text-primary d-flex align-items-center m-0">
           <i className="bi bi-clock-history me-2 fs-4"></i> Ritmo
         </Navbar.Brand>
@@ -41,7 +43,21 @@ export default function AppLayout() {
 
             <Dropdown.Menu>
               <Dropdown.Header>{user?.displayName || user?.email}</Dropdown.Header>
+              
               <Dropdown.Divider />
+              
+              <Dropdown.Item onClick={() => setTheme("light")} active={theme === "light"}>
+                <i className="bi bi-sun me-2"></i> Tema Claro
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setTheme("dark")} active={theme === "dark"}>
+                <i className="bi bi-moon me-2"></i> Tema Escuro
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setTheme("system")} active={theme === "system"}>
+                <i className="bi bi-laptop me-2"></i> Usar do Sistema
+              </Dropdown.Item>
+
+              <Dropdown.Divider />
+              
               <Dropdown.Item onClick={handleLogout} className="text-danger">
                 <i className="bi bi-box-arrow-right me-2"></i> Sair
               </Dropdown.Item>
@@ -58,7 +74,7 @@ export default function AppLayout() {
       </main>
 
       {/* Bottom Navigation (Mobile/App style) */}
-      <Nav className="bg-white border-top justify-content-around py-2 flex-shrink-0 fixed-bottom d-md-none">
+      <Nav className="bg-body border-top justify-content-around py-2 flex-shrink-0 fixed-bottom d-md-none">
         <NavLink to="/" className={getNavClass} end>
           <i className="bi bi-calendar2-check fs-4 mb-1"></i>
           <span style={{ fontSize: "12px" }}>Hoje</span>

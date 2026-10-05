@@ -121,10 +121,10 @@ export default function Hoje() {
       ) : (
         <>
           {totalCount > 0 && (
-            <div className="mb-4 bg-white p-3 rounded-4 shadow-sm border-0 d-flex align-items-center">
+            <div className="mb-4 bg-body-tertiary p-3 rounded-4 shadow-sm border-0 d-flex align-items-center">
               <div className="me-3">
-                <div style={{ width: "50px", height: "50px", borderRadius: "50%", background: `conic-gradient(var(--bs-primary) ${progress}%, #e9ecef 0)` }} className="d-flex align-items-center justify-content-center">
-                  <div className="bg-white rounded-circle d-flex align-items-center justify-content-center" style={{ width: "40px", height: "40px" }}>
+                <div style={{ width: "50px", height: "50px", borderRadius: "50%", background: `conic-gradient(var(--bs-primary) ${progress}%, var(--bs-secondary-bg) 0)` }} className="d-flex align-items-center justify-content-center">
+                  <div className="bg-body-tertiary rounded-circle d-flex align-items-center justify-content-center" style={{ width: "40px", height: "40px" }}>
                     <span className="small fw-bold">{progress}%</span>
                   </div>
                 </div>

@@ -70,7 +70,14 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
 - `src/utils/dateHelpers.js`: Funções de apoio para gerenciar formatação de horas e a data atual (`YYYY-MM-DD`) localmente.
 - `src/components/TaskCard.jsx`: Componente modular para mostrar os blocos de tempo com visualização da categoria e opções de Focar, Concluir e Excluir.
 - `src/pages/Hoje.jsx`: Página principal usando `onSnapshot` do Firebase para listagem em tempo real (reativa). Inclui Modal estilizado para criar blocos de tempo respeitando regras do banco. Adição de card de progresso diário (circular).
-## Fase 3 — Timer Pomodoro ⏳
+## Fase 3 — Timer Pomodoro ✅ (05/10/2026)
+
+### O que foi feito
+
+- `src/pages/Foco.jsx`: Construção da página do Timer. Lemos o `taskId` (via `useSearchParams`), carregamos a tarefa correspondente do Firestore em tempo real.
+- **Timer Reativo:** Lógica usando `setInterval` num `useEffect` para controlar os 25 minutos. Ao pausar ou limpar, o intervalo é recriado ou destruído, evitando vazamento de memória.
+- **Notificações Locais:** Quando o cronômetro bate 00:00, usamos a API nativa do navegador (`Notification.requestPermission` e `new Notification`) para avisar que o pomodoro acabou, cumprindo o requisito de uso de notificações locais.
+- **Atualização no Banco:** Usamos a função `updateTaskFocus` para incrementar o contador de pomodoros e o tempo focado da tarefa, salvando no Firebase (permitindo que a Fase 4 de Dashboard mostre gráficos reais).
 ## Fase 4 — Dashboard ⏳
 ## Fase 5 — PWA final, Firebase real e Hosting ⏳
 

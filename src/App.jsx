@@ -1,36 +1,42 @@
-import { Container, Card, Badge } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import AppLayout from "./components/AppLayout.jsx";
 
-/**
- * Tela provisória da Fase 0: serve só para confirmar que Vite, React,
- * Bootstrap, o tema e o service worker estão funcionando.
- * Na Fase 1 este arquivo vira o roteador do app (como o App.jsx do professor).
- */
-export default function App() {
-  const checks = [
-    "Vite + React 19",
-    "react-bootstrap + tema do Ritmo",
-    "vite-plugin-pwa (manifest + service worker)",
-    "Firebase CLI + emuladores (Auth / Firestore)",
-  ];
+// Paginas
+import Login from "./pages/Login.jsx";
+import Hoje from "./pages/Hoje.jsx";
+import Foco from "./pages/Foco.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Sobre from "./pages/Sobre.jsx";
 
+function App() {
   return (
-    <Container className="py-5" style={{ maxWidth: 560 }}>
-      <h1 className="fw-bold mb-1">Ritmo</h1>
-      <p className="text-body-secondary mb-4">Foco e blocos de tempo — Fase 0 (base do projeto)</p>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Rota Pública */}
+          <Route path="/login" element={<Login />} />
 
-      <Card>
-        <Card.Body>
-          <Card.Title className="h6 mb-3">Base configurada</Card.Title>
-          <ul className="list-unstyled mb-0 d-grid gap-2">
-            {checks.map((item) => (
-              <li key={item} className="d-flex align-items-center gap-2">
-                <Badge bg="success">ok</Badge>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Card.Body>
-      </Card>
-    </Container>
+          {/* Rotas Privadas que usam o AppLayout */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            {/* O index indica a rota "/" dentro de AppLayout */}
+            <Route index element={<Hoje />} />
+            <Route path="foco" element={<Foco />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="sobre" element={<Sobre />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
+
+export default App;

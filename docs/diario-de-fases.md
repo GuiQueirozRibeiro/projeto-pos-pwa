@@ -50,16 +50,17 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
 
 ---
 
-## Fase 1 — Autenticação e App Shell ⏳
+## Fase 1 — Autenticação e App Shell ✅ (05/10/2026)
 
-Roteiro (base: arquivos equivalentes em `../infnet-pwa-react/src`):
+### O que foi feito
 
-- `src/firebase.js`: igual ao do professor (Auth + Firestore com `persistentLocalCache`, emuladores se `VITE_USE_EMULATORS=true`), sem Messaging; fallback `projectId: "demo-ritmo"`
-- `src/contexts/AuthContext.jsx`: igual, mais o nome no cadastro (`updateProfile`)
-- `src/components/ProtectedRoute.jsx`, `OfflineBanner.jsx`, `InstallPwaButton.jsx`: reaproveitados
-- `src/components/AppLayout.jsx`: barra superior + **navegação inferior** (Hoje · Foco · Dashboard · Sobre) com `<Outlet />`
-- `src/pages/Login.jsx`: abas Entrar/Criar conta, erros traduzidos (`src/utils/authErrors.js`)
-- `src/App.jsx`: rotas `/login`, `/hoje`, `/foco`, `/dashboard`, `/sobre` (páginas provisórias nas três últimas)
+- `src/firebase.js`: Firebase Auth + Firestore com `persistentLocalCache` (offline-first).
+- `src/contexts/AuthContext.jsx`: Contexto de autenticação, registrando nome com `updateProfile`.
+- Componentes base: `ProtectedRoute.jsx`, `OfflineBanner.jsx`, `InstallPwaButton.jsx` reaproveitados.
+- `src/components/AppLayout.jsx`: O "App Shell" — barra superior (com avatar/logout e botão de instalação) e barra de navegação inferior estilo mobile-first.
+- `src/pages/Login.jsx`: Tela estilizada com login/cadastro e tratamento de erros do Firebase via `src/utils/authErrors.js`.
+- `src/App.jsx`: Configurado com React Router DOM e protegido.
+- `main.jsx`: Inclusão do CSS do Bootstrap Icons.
 
 ## Fase 2 — Linha do tempo ⏳
 ## Fase 3 — Timer Pomodoro ⏳

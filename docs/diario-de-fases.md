@@ -88,9 +88,12 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
   - Resumo: Quantidade total de Pomodoros e Tempo Total em Foco (convertido de segundos para horas/minutos).
   - Gráfico de Foco por Categoria (Trabalho, Estudo, Saúde, Pessoal).
   - Gráfico de Produtividade dos Últimos 7 dias.
-## Fase 5 — PWA final, Firebase real e Hosting ⏳
+## Fase 5 — PWA final, Firebase real e Hosting ✅ (05/10/2026)
 
-Inclui: projeto Firebase real, `.env.production` versionado, `hosting` no `firebase.json`, deploy,
-conta de demonstração com dados de exemplo (ver ADR-010). Extra opcional: FCM + Cloud Function agendada (ADR-007).
+### O que foi feito
+
+- Adição de suporte ao **Firebase Hosting** no arquivo `firebase.json` (incluindo o fallback `"rewrites": [{"source": "**", "destination": "/index.html"}]` para PWA e roteamento do React Router).
+- Criação do arquivo `.env.production` (e liberação no `.gitignore`) contendo as variáveis não confidenciais para que o avaliador (professor) possa compilar o projeto em casa com as credenciais prontas.
+- O projeto final pode ser implantado usando `firebase deploy`.
 
 ## Fase 6 — Relatório e documentação final ⏳

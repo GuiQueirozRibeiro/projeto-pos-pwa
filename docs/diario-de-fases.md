@@ -96,4 +96,8 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
 - Criação do arquivo `.env.production` (e liberação no `.gitignore`) contendo as variáveis não confidenciais para que o avaliador (professor) possa compilar o projeto em casa com as credenciais prontas.
 - O projeto final pode ser implantado usando `firebase deploy`.
 
-## Fase 6 — Relatório e documentação final ⏳
+## Fase 6 — Relatório e documentação final ✅ (05/10/2026)
+
+- Incorporamos os dados e os testes de usabilidade do projeto "Santuário de Tarefas" no documento final, provando a evolução da disciplina de UX para o código funcional.
+- Implementação de um Toast (Notificação flutuante) de "Salvo com sucesso" para obedecer ao feedback da pesquisa de usuário.
+- O relatório em PDF base está concluído em `docs/guilhermeribeiro_desenvolvimentodeappshibridoscompwa_pd.md`. O projeto técnico PWA está 100% finalizado.

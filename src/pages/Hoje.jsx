@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Modal, Form, Spinner, Alert } from "react-bootstrap";
+import { Button, Modal, Form, Spinner, Alert, Toast, ToastContainer } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { getTodayDateString } from "../utils/dateHelpers.js";
 import { subscribeTasksByDate, addTask, setTaskCompleted, deleteTask } from "../services/taskService.js";
@@ -13,6 +13,7 @@ export default function Hoje() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,6 +61,9 @@ export default function Hoje() {
       setTitle("");
       setStartTime("09:00");
       setDurationMinutes(25);
+      
+      // Feedback visual (UX)
+      setShowSuccess(true);
     } catch (err) {
       console.error(err);
       setError("Erro ao adicionar bloco. Verifique os dados.");
@@ -226,6 +230,15 @@ export default function Hoje() {
           </Form>
         </Modal.Body>
       </Modal>
+
+      {/* Feedback Visual de Sucesso */}
+      <ToastContainer position="bottom-center" className="p-3" style={{ zIndex: 9999, position: 'fixed', bottom: '70px' }}>
+        <Toast onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide bg="success">
+          <Toast.Body className="text-white fw-bold">
+            <i className="bi bi-check-circle me-2"></i> Bloco salvo com sucesso!
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
     </div>
   );
 }

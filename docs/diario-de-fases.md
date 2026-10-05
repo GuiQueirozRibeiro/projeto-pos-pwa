@@ -78,7 +78,16 @@ npm run emulators       # http://localhost:4000 (painel dos emuladores)
 - **Timer Reativo:** Lógica usando `setInterval` num `useEffect` para controlar os 25 minutos. Ao pausar ou limpar, o intervalo é recriado ou destruído, evitando vazamento de memória.
 - **Notificações Locais:** Quando o cronômetro bate 00:00, usamos a API nativa do navegador (`Notification.requestPermission` e `new Notification`) para avisar que o pomodoro acabou, cumprindo o requisito de uso de notificações locais.
 - **Atualização no Banco:** Usamos a função `updateTaskFocus` para incrementar o contador de pomodoros e o tempo focado da tarefa, salvando no Firebase (permitindo que a Fase 4 de Dashboard mostre gráficos reais).
-## Fase 4 — Dashboard ⏳
+## Fase 4 — Dashboard ✅ (05/10/2026)
+
+### O que foi feito
+
+- `npm install recharts`: Instalação de biblioteca de gráficos fácil e reativa para React.
+- `src/services/taskService.js`: Adicionada a query `subscribeAllTasks` para buscar todo o histórico de produtividade do usuário (apenas os documentos criados pelo próprio uid).
+- `src/pages/Dashboard.jsx`: Criação do Dashboard agregando os dados no front-end:
+  - Resumo: Quantidade total de Pomodoros e Tempo Total em Foco (convertido de segundos para horas/minutos).
+  - Gráfico de Foco por Categoria (Trabalho, Estudo, Saúde, Pessoal).
+  - Gráfico de Produtividade dos Últimos 7 dias.
 ## Fase 5 — PWA final, Firebase real e Hosting ⏳
 
 Inclui: projeto Firebase real, `.env.production` versionado, `hosting` no `firebase.json`, deploy,

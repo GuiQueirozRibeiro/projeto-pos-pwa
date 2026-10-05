@@ -43,6 +43,28 @@ export function subscribeTasksByDate(uid, date, onChange, onError) {
 }
 
 /**
+ * Assina todas as tasks de um usuário (para gráficos e histórico).
+ */
+export function subscribeAllTasks(uid, onChange, onError) {
+  const q = query(
+    tasksCollection,
+    where("uid", "==", uid)
+  );
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const tasks = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+      onChange(tasks);
+    },
+    (err) => {
+      console.error("[taskService] erro ao assinar todas as tasks:", err);
+      if (onError) onError(err);
+    }
+  );
+}
+
+/**
  * Adiciona um novo bloco de tempo (task).
  */
 export async function addTask(uid, { title, category, date, startTime, durationMinutes }) {

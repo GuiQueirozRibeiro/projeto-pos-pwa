@@ -84,6 +84,15 @@
   --bs-dropdown-divider-bg: var(--ritmo-border);
 }
 
+[data-bs-theme="dark"] .form-check-input {
+  background-color: var(--ritmo-surface-2);
+  border-color: var(--bs-secondary-color);
+}
+[data-bs-theme="dark"] .form-check-input:checked {
+  background-color: var(--ritmo-primary);
+  border-color: var(--ritmo-primary);
+}
+
 body {
   margin: 0;
   background: var(--ritmo-bg);

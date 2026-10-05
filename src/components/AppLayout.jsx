@@ -32,7 +32,7 @@ export default function AppLayout() {
         <Navbar.Collapse className="justify-content-end">
           <InstallPwaButton className="me-3" />
           <Dropdown align="end">
-            <Dropdown.Toggle variant="light" id="dropdown-basic" className="d-flex align-items-center border-0 bg-transparent p-0">
+            <Dropdown.Toggle variant="link" id="dropdown-basic" className="d-flex align-items-center border-0 bg-transparent p-0 text-body text-decoration-none">
               <div
                 className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
                 style={{ width: "36px", height: "36px", fontSize: "14px", fontWeight: "600" }}
